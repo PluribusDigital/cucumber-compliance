@@ -1,5 +1,4 @@
 source 'https://rubygems.org'
-ruby "2.3.3"
 
 # core test libraries
 gem 'rspec'
