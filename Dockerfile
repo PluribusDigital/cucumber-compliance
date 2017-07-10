@@ -11,4 +11,4 @@ RUN gem install bundler && bundle install --jobs 20 --retry 5
 
 # EXPOSE 3000
 
-CMD ["bundle", "exec", "cucumber"]
+# CMD ["bundle", "exec", "cucumber"]

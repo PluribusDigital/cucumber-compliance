@@ -1,0 +1,9 @@
+version: '2'
+services:
+  browser:
+    image: selenium/standalone-chrome:3.4.0-einsteinium
+  tester:
+    build: .
+    command: bundle exec cucumber
+    depends_on:
+      - browser
