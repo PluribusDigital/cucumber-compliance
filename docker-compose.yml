@@ -2,6 +2,7 @@ version: '2'
 services:
   browser:
     image: selenium/standalone-firefox-debug
+    shm_size: 4g
     ports:
       - 5902:5900
       - 4445:4444
