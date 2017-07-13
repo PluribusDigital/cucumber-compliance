@@ -6,6 +6,7 @@ gem 'cucumber'
 gem 'capybara'
 
 gem 'selenium-webdriver'
+
 # debug tools
 gem 'launchy'
 gem 'byebug'
