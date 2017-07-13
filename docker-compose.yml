@@ -1,9 +1,11 @@
 version: '2'
 services:
   browser:
-    image: selenium/standalone-chrome:3.4.0-einsteinium
+    image: selenium/standalone-firefox-debug
+    # ports:
+    #   - 4444:4444
   tester:
     build: .
     command: bundle exec cucumber
-    depends_on:
+    links:
       - browser
