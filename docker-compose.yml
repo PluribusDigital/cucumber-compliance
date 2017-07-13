@@ -2,10 +2,13 @@ version: '2'
 services:
   browser:
     image: selenium/standalone-firefox-debug
-    # ports:
-    #   - 4444:4444
+    ports:
+      - 5902:5900
+      - 4445:4444
   tester:
     build: .
     command: bundle exec cucumber
-    links:
+    volumes:
+      - .:/home/myapp
+    depends_on:
       - browser

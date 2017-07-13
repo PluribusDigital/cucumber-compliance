@@ -1,13 +1,13 @@
-FROM selenium/standalone-firefox-debug
+FROM ruby:2.3.3
 
 # switch to root user to enable install & file actions
-USER root
+# USER root
 
 # Install Ruby & related dependencies
-RUN apt-get update && apt-get install -y ruby
-RUN apt-get install -y ruby-dev
-RUN apt-get install -y build-essential
-RUN apt-get install -y zlib1g-dev
+# RUN apt-get update && apt-get install -y ruby
+# RUN apt-get install -y ruby-dev
+# RUN apt-get install -y build-essential
+# RUN apt-get install -y zlib1g-dev
 
 # Setup & map working dir
 RUN mkdir /home/myapp
