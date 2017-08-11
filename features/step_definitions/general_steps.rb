@@ -19,3 +19,9 @@ end
 Then(/^I should NOT see the record for serial "(\d+)"$/) do |serial|
   page.assert_no_selector 'td[data-label="Serial Number"]',text:serial
 end
+
+When(/^I should save page as html$/) do
+  require 'capybara-screenshot/cucumber'
+  Capybara.save_path = "508scan/files_to_scan"
+  Capybara.save_page
+end

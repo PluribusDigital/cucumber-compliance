@@ -1,0 +1,1260 @@
+<html><head>
+<script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script><script async="" src="//www.googletagmanager.com/gtm.js?id=GTM-5D5BBD"></script><script language="JavaScript">
+ var port = "";
+ 
+   document.write("<base href='" + window.location.protocol + "//" + window.location.hostname + "/'/>");
+   
+ </script><base href="https://teas.uspto.gov/">
+<title>Trademark/Service Mark Application, Principal Register</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="Trademark Service Mark Application Electronic Filing Submissions Internet">
+<meta name="description" content="U.S. Patent and Trademark Office (USPTO) Trademark Electronic Application System (TEAS) - submit application directly over the Internet">
+<link rel="stylesheet" type="text/css" href="/forms/styles/teas.css">
+<script type="text/javascript" src="/forms/styles/tip.js?1"></script><script type="text/javascript">
+d=document;
+isNS4=d.layers ? true : false;
+isIE=d.all ? true : false;
+isDOM=d.getElementById ? true : false;
+d.cookie="ns4=" + isNS4;
+d.cookie="ie=" + isIE;
+d.cookie="dom=" + isDOM;
+</script>
+</head><body onload="setInputIsRequiredReminder();"><div id="t-i-p" style="position:absolute;top:0;left:0;visibility:hidden;z-index:100"></div>
+
+
+<script type="text/javascript" src="https://components.uspto.gov/js/ais/23-teas.js"></script>
+
+<script language="JavaScript">
+var sessTimeOut = 3600;
+
+function confirmSessRenewal(){
+  var sess_exp = getSessExpTime();
+  var sess_msg ="Your session is about to expire on " +sess_exp+ ".  Press 'OK' to renew your session. If not renewed, you will be taken back to wizard page";
+    this.focus();
+    alert(sess_msg);
+    var confirm_date = new Date();
+	 if(Date.parse(confirm_date) >= Date.parse(sess_exp) ){
+          if(document.teasform.formId.value == "ftk"){ 
+             top.location="/forms/teasplus";
+          }else{
+	      top.location="/forms/" + document.teasform.formId.value;
+          }
+	 }else{
+	   pingServer('/forms/SessionTimeOut.jsp');
+	  }
+}
+</script>
+<script language="JavaScript1.2" src="/forms/SessionWarningTimer.js"></script>
+
+
+
+
+
+
+<script type="text/javascript">
+var isame=0; var win=false, iConsent=0,iPartEvidence;
+
+
+var prefix = "form.owner[0].";
+function modify(target) {
+  var e = document.forms[0].elements;
+  submitForm(document.forms[0]);
+  e["form.edNext"].value=target;
+  e["form.edMode"].name="";
+  e["form.action"].value="modify";
+  isame = 0;
+  ajaxsubmit(e["form.action"], "ajax=body&" + encodeURIComponent(postData(document.forms[0])), "body");
+}
+function removeOwner(obj, target) {
+  var e = obj.form.elements;
+  e["form.edNext"].value=target;
+  e["form.edMode"].name="";
+  obj.disabled=true;
+  obj.value=" Wait... ";
+  e["form.action"].value="remove";
+  isame = 0;
+  ajaxsubmit(obj, "ajax=body&" + encodeURIComponent(postData(obj.form)), "body");
+}
+function add(obj) {
+  var e = obj.form.elements;
+  submitForm(obj.form);
+  e["form.edNext"].name="";
+  obj.disabled=true;
+  obj.value=" Wait... ";
+  e["form.action"].value="add";
+  isame = 0;
+  ajaxsubmit(obj, "ajax=body&" + encodeURIComponent(postData(obj.form)), "body");
+}
+function chooseOne(obj, val){
+      var e = obj.form.elements;
+ 	      
+   for (var i=0; i<4; i++) {
+      if(i!=val){
+        e[prefix + "dbaAkaChoice"][i].checked = false;
+      }
+   }
+}
+
+//function changeView(obj, same) {
+//  if (isame == same) return;
+//  isame = same;
+//  var e = obj.form.elements;
+//  if (e[prefix + "citizenship"]) e[prefix + "citizenship"].selectedIndex=0;
+//  if (e["entityState"]) { e["entityState"].selectedIndex=0; e["entityState"].name = prefix + "stateOrganized"; }
+//  if (e[prefix + "partnerName"]) e[prefix + "partnerName"].value="";
+//  if (e["otherEntity"]) { e["otherEntity"].value=""; e["otherEntity"].name=prefix + "otherEntity"; }
+//  if (e["otherState"]) { e["otherState"].value=""; e["otherState"].name = prefix + "state"; }
+  //alert(fullname(obj.name));
+//  if (fullname(obj.name).search(/\[0\]$/)>0) {
+//    e["focus"].value=fullname(obj.name.replace(/\.[^.]+$/, ".") + "citizenship");
+//  } else if (fullname(obj.name).search(/\[9\]$/)>0) {
+//    e["focus"].value=fullname("entityOtherDom");
+//  } else {
+//    e["focus"].value=fullname("entityState");
+//  }
+//  ajaxsubmit(obj, "ajax=entity&" + encodeURIComponent(postData(obj.form)), "entity");
+//}
+  function getFocusElement(id) {
+    var eName="";
+    switch (id) {
+      case 0:
+	return "owner.individual";
+      case 1:
+	return "owner.corporation";
+      case 2:
+	return "owner.llc";
+      case 3:
+	return "owner.partnership";
+      case 4:
+	return "owner.limitedPartnership";
+      case 5:
+	return "owner.jointVenture";
+      case 6:
+	return "owner.soleProprietorship";
+      case 7:
+	return "owner.trust";
+      case 8:
+	return "owner.estate";
+      case 9:
+	return "owner.other";
+      default:
+	return "";
+    }
+  }
+function changeView(obj, same,id) {
+  if (isame == same) return;
+  isame = same;
+  var e = obj.form.elements;
+  if (e[prefix + "citizenship"]) e[prefix + "citizenship"].selectedIndex=0;
+  if (e["entityState"]) { e["entityState"].selectedIndex=0; e["entityState"].name = prefix + "stateOrganized"; }
+  if (e[prefix + "partnerName"]) e[prefix + "partnerName"].value="";
+  if (e["otherEntity"]) { e["otherEntity"].value=""; e["otherEntity"].name=prefix + "otherEntity"; }
+ 
+//  if (fullname(obj.name).search(/\[0\]$/)>0) {
+//    e["focus"].value=fullname(obj.name.replace(/\.[^.]+$/, ".") + "citizenship");
+//  } else if (fullname(obj.name).search(/\[9\]$/)>0) {
+//    e["focus"].value=fullname("entityOtherDom");
+//  } else {
+//    e["focus"].value=fullname("entityState");
+//  }
+  e["focus"].value=fullname(getFocusElement(id));
+//e["focus"].value="['"+obj.name+"']";
+
+
+  ajaxsubmit(obj, "ajax=entity&" + encodeURIComponent(postData(obj.form)), "entity");
+}
+function doUpdate(AJAX, id) {
+  document.getElementById(id).innerHTML = trim(AJAX.responseText);
+  var e = document.forms[0].elements;
+  var obj = eval("document.forms[0].elements" + e['focus'].value);
+  //if (id == "entity" && !isEmpty(obj) && !obj.disabled && !isEmpty(obj.focus)) obj.focus();
+  if (e["form.action"].value=="add") setTimeout("scrollTo(0, 40)", 5);
+  e["form.action"].value=""; prefix = e["prefix"].value; e["prefix"].name = "";
+}
+function submitForm(form) {
+  var e=form.elements;
+  if (e["entityState"]) {
+    if (e["entityState"].selectedIndex > 0) {
+      e["entityState"].name = prefix + "stateOrganized";
+      e["entityCountry"].name = "";
+    } else {
+      e["entityState"].name = "";
+      e["entityCountry"].name = prefix + "stateOrganized";
+    }
+  }
+  if (e["otherEntity"]) {
+    if (e["otherEntity"].value=="") {
+      e["otherEntity"].name = "";
+      if (e["entityOtherDom"].selectedIndex > 0) {
+        e["entityOtherDom"].name = prefix + "otherEntity";
+        e["entityOtherFor"].name = "";
+      } else {
+        e["entityOtherDom"].name = "";
+        e["entityOtherFor"].name = prefix + "otherEntity";
+      }
+    } else {
+      e["otherEntity"].name = prefix + "otherEntity";
+      e["entityOtherDom"].name = "";
+      e["entityOtherFor"].name = "";
+    }
+   // TCCB 945 - Oother files changed are fixed-list.properties
+     var tmp = e["otherEntity"].value;
+   e["otherEntity"].value = tmp;
+   // end 945
+  }
+/*  if (e[prefix + "otherState"]) {
+    if (trim(e[prefix + "otherState"].value) == "") {
+      e[prefix + "stateList"].name = prefix + "state";
+      e[prefix + "otherState"].name = "";
+    } else {
+      e[prefix + "stateList"].name = "";
+      e[prefix + "otherState"].name = prefix + "state";
+    }
+    
+  }*/
+  return true;
+}
+
+</script>
+
+
+
+
+
+<noscript>
+      <H3><center><font color=red>You will not be able to use TEAS</font></center></H3>
+      <H3><center><font color=red>This Page Requires JavaScript.</font></center></H3>
+      <H4><center>TEAS web pages require the enablement of JavaScript in your web browser.  To enable JavaScript, please follow the steps provided <a href="http://teas.uspto.gov/teas/128encryption.html#JSInsteps" target="_blank">here</a>.
+      </center>
+      </H4> 
+<br> 
+</noscript>
+<table width="100%" cellspacing="0" cellpadding="3" border="0">
+<tbody><tr valign="bottom" bgcolor="#001d2d"><td rowspan="2" width="60">
+<a href="https://www.uspto.gov/index.html" target="_top">
+<img src="/forms/styles/uspto_seal_50.gif" alt="USPTO SEAL LOGO" height="56" border="0"></a>
+</td><th width="90%" align="left">
+<font color="white">United States Patent and Trademark Office</font>
+</th><td rowspan="2" align="right">
+<script language="JavaScript"> 
+ document.write("<a href='" + window.location.protocol + "//" + window.location.hostname + "/'/>");
+ </script><a href="https://teas.uspto.gov/">
+<img src="/forms/styles/teaslogo.gif" alt="TEAS SEAL LOGO" height="56" border="0"></a>
+</td></tr>
+<tr valign="middle" bgcolor="#001d2d"><th align="left">
+<font color="white">Trademark Electronic Application System - TEAS Application</font>
+</th></tr>
+<tr bgcolor="#ac0911"><td colspan="3" height="6"></td></tr>
+</tbody></table>
+<center>
+<table width="96%" cellpadding="6" border="0"><tbody><tr><td bgcolor="#FFFFFF">
+<form name="teasform" method="post" action="/forms/teas.service" enctype="multipart/form-data" onsubmit="return submitForm(this)">
+<input name="form.action" type="hidden">
+<input name="webpageCounter" value="3" type="hidden">
+<input name="formId" value="ftk" type="hidden">
+<input name="focus" type="hidden">
+<p>
+</p><center>
+  <div class="box">  
+The USPTO will perform maintenance on TEAS and TEASi beginning at 10:00 p.m., Saturday, August 12 and ending at 12 p.m., Sunday, August 13 ET.
+</div>
+</center><p>
+
+
+
+</p><table width="100%" cellspacing="0" cellpadding="4" border="0">
+
+<tbody><tr><td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table width="100%" border="0">
+<tbody><tr><td class="navigation">
+
+
+<a href="javascript:popHelp('https://www.uspto.gov/trademarks/teas/teas-help.jsp#Navigation')" onfocus="return show_tip('navigation.bar', event)" onblur="return hide_tip()" onmouseout="return hide_tip()" onmouseover="return show_tip('navigation.bar', event)" onmousemove="return show_tip('navigation.bar', event)"><b>Navigation
+History</b></a>: <a href="/forms/view.service?page=ftk.instruction">Instruction</a> &gt; <b>Applicant</b> &gt; Mark &gt; Goods/Services/Filing Basis &gt; Attorney/Dom. Rep./Correspondence &gt; Fee/Signature
+<hr noshade="" size="4" color="#71819b">
+
+
+<font size="-1">
+Under the Paperwork Reduction Act of 1995 no persons are required to respond to a collection of information unless it displays a valid OMB control number.
+</font>
+<br>
+PTO Form 1478
+  (Rev 09/2006)
+  <br>OMB No. 0651-0009
+   (Exp. 02/28/2018)
+</td></tr>
+</tbody></table>
+
+</td></tr>
+
+
+<tr><td>
+
+
+
+
+
+
+<table width="100%" border="0"><tbody><tr><td class="header">
+Trademark/Service Mark Application, Principal Register
+</td></tr><tr><td class="title" align="center">
+TEAS Plus Application (Version 5.10)
+
+
+</td></tr></tbody></table>
+
+
+</td></tr>
+
+
+
+
+
+
+<tr><td align="center"><div id="errmsg">
+<table width="90%" cellspacing="0" cellpadding="0" border="0"><tbody><tr bgcolor="#FF0000"><td>
+<table width="100%" cellspacing="2" cellpadding="10" border="0"><tbody><tr bgcolor="#FFFFF0"><td>
+The following error(s) <img src="/images/error.gif" alt="ERROR" height="16" border="0" align="absmiddle"> have been detected in the page, which <b>must</b> be corrected.
+To correct the error(s), scroll down <b>directly</b> on this page to access the
+referenced field(s) (<i>i.e.</i>, do <b>not</b> click your browser's back button).
+<table width="100%" cellpadding="4" border="0">
+
+<tbody><tr valign="top"><td width="20" align="center">
+<img src="/images/error.gif" alt="ERROR" height="16" border="0">
+</td><td style="color:red" width="100%">
+Please enter  Owner of Mark.
+</td></tr>
+
+<tr valign="top"><td width="20" align="center">
+<img src="/images/error.gif" alt="ERROR" height="16" border="0">
+</td><td style="color:red" width="100%">
+Please enter Street Address.
+</td></tr>
+
+<tr valign="top"><td width="20" align="center">
+<img src="/images/error.gif" alt="ERROR" height="16" border="0">
+</td><td style="color:red" width="100%">
+Please enter City Name.
+</td></tr>
+
+<tr valign="top"><td width="20" align="center">
+<img src="/images/error.gif" alt="ERROR" height="16" border="0">
+</td><td style="color:red" width="100%">
+Please enter Country Name
+</td></tr>
+
+<tr valign="top"><td width="20" align="center">
+<img src="/images/error.gif" alt="ERROR" height="16" border="0">
+</td><td style="color:red" width="100%">
+Entity type was not specified.
+</td></tr>
+
+</tbody></table>
+</td></tr></tbody></table>
+</td></tr></tbody></table>
+</div></td></tr>
+
+
+<tr><td><span id="body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script language="JavaScript" src="/forms/view/BAS/jquery-1.11.1.min.js"></script>
+<script type="text/javascript">
+
+usCountryCode = '+0-';
+countryCodeInputId = '#selectclass'; 
+edCurr = 0;
+phoneInputId = '#phone_' + edCurr;
+extInputId = '#ext_' + edCurr;
+
+$(document).ready(function() {
+   $('#phone_0' ).on('input', function(e) {
+      var phoneInput = $(this);
+      var countryCode = $(countryCodeInputId).val();
+      var phoneNumber = $.trim(phoneInput.val());   
+      
+      if (countryCode == usCountryCode) {
+	     var phoneNumberStrWithDigitOnly = dropNoneDigitChar(0, phoneNumber);
+	     phoneNumberStrWithDigitOnly = dropFirstOne(phoneNumberStrWithDigitOnly);
+         var upperLimit =  phoneNumberStrWithDigitOnly.length < 10 ? phoneNumberStrWithDigitOnly.length : 10;
+         var formattedNumber = '';
+         for(i = 0; i < upperLimit; i++) {
+            var c = phoneNumberStrWithDigitOnly.charAt(i);
+   	        if ((i == 3) || (i == 6)) {
+   		       formattedNumber += '-';
+   	        }
+   		    formattedNumber += c;
+         }
+         phoneInput.val(formattedNumber); 
+         if (formattedNumber == '') {
+            $(extInputId).val('');
+         }
+      } else {
+         if (phoneNumber.indexOf(countryCode) != 0){
+   	         phoneInput.val(countryCode);
+         } else {
+   	         var newInputStr = dropNoneDigitChar(countryCode.length, phoneNumber);
+   	         phoneInput.val(newInputStr);
+         }  
+      }      
+  });
+   
+  $(extInputId).on('input', function(e) {
+     var extInput = $(this);
+     var ext = extInput.val();
+	 if ($.trim($(phoneInputId).val()) == '') {
+	    extInput.val('');
+     } else {
+        extInput.val(dropNoneDigitChar(0, ext));
+     }
+  });
+});
+
+function countryCodeChanged() {
+   var countryCode = $('#selectclass' ).val();
+   var phoneInput = $(phoneInputId);
+   if (countryCode == usCountryCode) {
+      phoneInput.val('');
+      $(extInputId).val('');
+   } else {
+      if (phoneInput.val().indexOf(countryCode) != 0){
+	      phoneInput.val(countryCode);
+      }
+   }     
+}
+// startLoc: the position from where we start stripping none-digit chars
+function dropNoneDigitChar(startLoc, originalStr) {
+   var newStr = '';
+   for (i = 0; i < originalStr.length; i++) {
+	    var c = originalStr.charAt(i);
+	    if (i < startLoc) {
+	       newStr += c;
+	       continue;
+	    }
+	    if ($.isNumeric(c)) {
+	       newStr += c;
+	    }
+   }
+   return newStr;
+}
+
+function dropFirstOne(str) {
+   if (str.length > 0 && str.charAt(0) == '1' ) {
+      str = dropFirstOne(str.substring(1, str.length)); 
+   }
+   return str;
+}
+
+</script>
+
+<input name="page" value="2" type="hidden">
+
+
+
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+<tbody><tr bgcolor="#ffffff"><td>
+<table width="100%" cellspacing="1" cellpadding="0" border="0"><tbody><tr bgcolor="#FFFFFF"><td>
+  
+     <br>    
+<b>    
+<font color="black">NOTE:</font> This identifies who owns the mark, not necessarily who is filing the application. For an instructional video focusing on what is meant by the term "applicant," <a href="https://www.uspto.gov/watch/TMINapplicant" target="_blank">click here</a>.    
+<br>    
+<font color="black">NOTE:</font>  For an instructional video explaining how to fill out the Applicant Information page, <a href="https://www.uspto.gov/watch/TNBApplicant" target="_blank">click here</a>.    
+</b>    
+
+     
+</td></tr></tbody></table>
+</td></tr></tbody></table>
+
+<p> 
+
+
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+<tbody><tr>
+<td bgcolor="#006699">
+<table width="100%" cellspacing="1" cellpadding="4" border="0">
+
+<tbody><tr bgcolor="#EFEFEF"><td colspan="2">
+  <p class="title" align="center">
+  
+  Applicant Information
+  </p>
+  <!-- <b>Note</b>: This identifies who <b>owns</b> the mark, <b>not</b> necessarily who is <b>filing</b> the application.<br> -->
+  <b>Note</b>: If there is more than one owner of the mark, complete the information for the
+  first owner, and then click on the "Add Owner" button at the bottom of this page.  Repeat,
+  as necessary, for the appropriate listing of all owners. <font color="red">Warning</font>:
+  It is important to determine whether, in fact, the applicants are <a href="javascript:popHelp('https://www.uspto.gov/trademarks/teas/teas-help.jsp#JointApplicants')" onfocus="return show_tip('joint.name', event)" onblur="return hide_tip()" onmouseout="return hide_tip()" onmouseover="return show_tip('joint.name', event)" onmousemove="return show_tip('joint.name', event)">joint applicants</a>,
+  or some other entity type listed below.
+</td></tr>
+
+<tr bgcolor="#EFEFEF"><th align="left">
+  <label for="form.owner[0].ownerName"><font color="red">*</font>
+  <a href="javascript:popHelp('https://www.uspto.gov/trademarks/teas/teas-help.jsp#Owner')" onfocus="return show_tip('owner.name', event)" onblur="return hide_tip()" onmouseout="return hide_tip()" onmouseover="return show_tip('owner.name', event)" onmousemove="return show_tip('owner.name', event)">Owner of Mark</a></label>
+</th><td width="75%" nowrap="" bgcolor="#FFFFFF">
+  <input name="form.owner[0].ownerName" size="20" value="" id="form.owner[0].ownerName" style="width:300" type="text">
+  <br>
+  <small><font color="red">
+  [If an individual, use the following format: Last Name, First Name Middle Initial or Name, if applicable] 
+  </font></small>
+</td></tr>
+
+
+<tr bgcolor="#EFEFEF"><th nowrap="" align="left">
+  <fieldset style="border: none">
+  <input name="form.owner[0].dbaAkaChoice" value="DBA" onclick="if(this.checked)chooseOne(this, '0');" id="dbaAkaChoiceDBA" type="checkbox"> 
+  <label for="dbaAkaChoiceDBA">DBA (doing business as)</label>
+  <input name="form.owner[0].dbaAkaChoice" value="AKA" onclick="if(this.checked)chooseOne(this, '1');" id="dbaAkaChoiceAKA" type="checkbox">
+  <label for="dbaAkaChoiceAKA">AKA (also known as)</label> <br>
+  <input name="form.owner[0].dbaAkaChoice" value="TA" onclick="if(this.checked)chooseOne(this, '2');" id="dbaAkaChoiceTA" type="checkbox">
+  <label for="dbaAkaChoiceTA">TA (trading as)</label>
+  <input name="form.owner[0].dbaAkaChoice" value="Formerly" onclick="if(this.checked)chooseOne(this, '3');" id="dbaAkaChoiceFormerly" type="checkbox">
+  <label for="dbaAkaChoiceFormerly">Formerly</label>
+  </fieldset>
+  </th><td width="75%" nowrap="" bgcolor="#FFFFFF">
+  <input name="form.owner[0].dbaAkaText" size="20" value="" id="form.owner[0].dbaakatext" style="width:300" title="If the owner is doing business as or trading under a different name, enter that information in the DBA, AKA, TA, or formerly known as field.
+" type="text">
+</td></tr>
+<!-- end 1043 -->
+
+
+<tr bgcolor="#EFEFEF">
+<td width="25%">
+<table width="100%" cellspacing="7" cellpadding="1" border="0">
+<tbody><tr bgcolor="#EFEFEF">
+<th align="left">
+
+  <font color="red">*</font>
+
+  <a href="javascript:popHelp('https://www.uspto.gov/trademarks/teas/teas-help.jsp#Entity')" onfocus="return show_tip('owner.entityType', event)" onblur="return hide_tip()" onmouseout="return hide_tip()" onmouseover="return show_tip('owner.entityType', event)" onmousemove="return show_tip('owner.entityType', event)">Entity Type</a>
+</th>
+</tr>
+
+<tr>
+  <th align="left">
+    <input name="form.owner[0].entityType" value="01" onclick="changeView(this,1,0)" id="owner.individual" type="radio">
+    <label for="owner.individual">                          
+    <a href="javascript:popHelp('https://www.uspto.gov/trademarks/teas/teas-help.jsp#Individual')" onfocus="return show_tip('owner.individual', event)" onblur="return hide_tip()" onmouseout="return hide_tip()" onmouseover="return show_tip('owner.individual', event)" onmousemove="return show_tip('owner.individual', event)">Individual</a>
+    </label>
+  </th>
+  </tr>
+<tr>
+
+</tr><tr>
+  <th align="left">
+    <input name="form.owner[0].entityType" value="03" onclick="changeView(this,2,1)" id="owner.corporation" type="radio">
+    <label for="owner.corporation">
+    <a href="javascript:popHelp('https://www.uspto.gov/trademarks/teas/teas-help.jsp#Corporation')" onfocus="return show_tip('owner.corporation', event)" onblur="return hide_tip()" onmouseout="return hide_tip()" onmouseover="return show_tip('owner.corporation', event)" onmousemove="return show_tip('owner.corporation', event)">Corporation</a>
+    </label>
+  </th>
+</tr>
+<tr>
+  <th align="left">
+    <input name="form.owner[0].entityType" value="16" onclick="changeView(this,16,2)" id="owner.llc" type="radio">
+    <label for="owner.llc">
+    <a href="javascript:popHelp('https://www.uspto.gov/trademarks/teas/teas-help.jsp#Limited')" onfocus="return show_tip('owner.corporation', event)" onblur="return hide_tip()" onmouseout="return hide_tip()" onmouseover="return show_tip('owner.corporation', event)" onmousemove="return show_tip('owner.corporation', event)">Limited Liability Company</a>
+    </label>
+</th>
+</tr>
+<tr>
+<th align="left">
+    <input name="form.owner[0].entityType" value="02" onclick="changeView(this,3,3)" id="owner.partnership" type="radio">
+    <label for="owner.partnership">
+    <a href="javascript:popHelp('https://www.uspto.gov/trademarks/teas/teas-help.jsp#Partnership')" onfocus="return show_tip('owner.partnership', event)" onblur="return hide_tip()" onmouseout="return hide_tip()" onmouseover="return show_tip('owner.partnership', event)" onmousemove="return show_tip('owner.partnership', event)">Partnership</a>
+    </label>
+  </th>
+</tr>
+
+<tr>
+  <th nowrap="" align="left">
+    <input name="form.owner[0].entityType" value="13" onclick="changeView(this,3,4)" id="owner.limitedPartnership" type="radio">
+    <label for="owner.limitedPartnership">
+    <a href="javascript:popHelp('https://www.uspto.gov/trademarks/teas/teas-help.jsp#LimitedPartnership')" onfocus="return show_tip('owner.limitedPartnership', event)" onblur="return hide_tip()" onmouseout="return hide_tip()" onmouseover="return show_tip('owner.limitedPartnership', event)" onmousemove="return show_tip('owner.limitedPartnership', event)">Limited Partnership</a>
+    </label>
+  </th>
+</tr>
+
+<tr>
+  <th align="left">
+    <input name="form.owner[0].entityType" value="05" onclick="changeView(this,3,5)" id="owner.jointVenture" type="radio">
+    <label for="owner.jointVenture">
+    <a href="javascript:popHelp('https://www.uspto.gov/trademarks/teas/teas-help.jsp#Jointventure')" onfocus="return show_tip('owner.jointVenture', event)" onblur="return hide_tip()" onmouseout="return hide_tip()" onmouseover="return show_tip('owner.jointVenture', event)" onmousemove="return show_tip('owner.jointVenture', event)">Joint Venture</a>
+    </label>
+  </th>
+</tr>
+
+<tr>
+  <th align="left">
+    <input name="form.owner[0].entityType" value="19" onclick="changeView(this,3,6)" id="owner.soleProprietorship" type="radio">
+    <label for="owner.soleProprietorship">
+    <a href="javascript:popHelp('https://www.uspto.gov/trademarks/teas/teas-help.jsp#Soleprop')" onfocus="return show_tip('owner.soleProprietorship', event)" onblur="return hide_tip()" onmouseout="return hide_tip()" onmouseover="return show_tip('owner.soleProprietorship', event)" onmousemove="return show_tip('owner.soleProprietorship', event)">Sole Proprietorship</a>
+    </label>
+  </th>
+  </tr>
+
+<tr>
+  <th align="left">
+    <input name="form.owner[0].entityType" value="17" onclick="changeView(this,3,7)" id="owner.trust" type="radio">
+    <label for="owner.trust">
+    <a href="javascript:popHelp('https://www.uspto.gov/trademarks/teas/teas-help.jsp#Trust')" onfocus="return show_tip('owner.trust', event)" onblur="return hide_tip()" onmouseout="return hide_tip()" onmouseover="return show_tip('owner.trust', event)" onmousemove="return show_tip('owner.trust', event)">Trust</a>
+    </label>
+  </th>
+  </tr>
+
+<tr>
+  <th align="left">
+    <input name="form.owner[0].entityType" value="18" onclick="changeView(this,3,8)" id="owner.estate" type="radio">
+    <label for="owner.estate">
+    <a href="javascript:popHelp('https://www.uspto.gov/trademarks/teas/teas-help.jsp#Estate')" onfocus="return show_tip('owner.estate', event)" onblur="return hide_tip()" onmouseout="return hide_tip()" onmouseover="return show_tip('owner.estate', event)" onmousemove="return show_tip('owner.estate', event)">Estate</a>
+    </label>
+  </th>
+  </tr>
+
+<tr>
+  <th align="left">
+    <input name="form.owner[0].entityType" value="99" onclick="changeView(this,4,9)" id="owner.other" type="radio">
+    <label for="owner.other">
+    <a href="javascript:popHelp('https://www.uspto.gov/trademarks/teas/teas-help.jsp#Other')" onfocus="return show_tip('owner.other', event)" onblur="return hide_tip()" onmouseout="return hide_tip()" onmouseover="return show_tip('owner.other', event)" onmousemove="return show_tip('owner.other', event)">Other</a>
+    </label>
+  </th>
+  </tr>
+</tbody></table>
+</td>
+<td bgcolor="#EFEFEF">
+<div id="entity">
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+function setInputIsRequiredReminder() {
+   //alert('setInputIsRequiredReminder gets called : ' + selectedOption.value);
+   var selectedOption = document.getElementById('ENTITY_STATE_LABEL1'); 
+   if (selectedOption != null) {
+      if (selectedOption.selectedIndex > 0) { 
+          document.getElementById('inputIsRequiredReminder').style.visibility='visible';
+      } else {
+          document.getElementById('inputIsRequiredReminder').style.visibility='hidden';
+      }
+   }
+}
+</script>
+
+
+
+
+<input name="prefix" value="form.owner[0]." type="hidden">
+
+
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+<div class="title">
+&lt;== Click the appropriate circle on the left to indicate the applicant's entity type.  The form will then display the field(s) for entering information corresponding to that specific entity type.   If your entity type is not one of the options displayed directly to the left, you must click on "Other" and then select the appropriate entry from the relevant pull-down box.
+</div>
+
+
+
+</div> 
+</td>
+</tr>
+
+
+ 
+<tr bgcolor="#FFFFFF"><th bgcolor="#EFEFEF" align="left">
+  <label for="form.owner[0].internalAddr">
+  <a href="javascript:popHelp('https://www.uspto.gov/trademarks/teas/teas-help.jsp#InternalAddress')" onfocus="return show_tip('owner.internalAddr', event)" onblur="return hide_tip()" onmouseout="return hide_tip()" onmouseover="return show_tip('owner.internalAddr', event)" onmousemove="return show_tip('owner.internalAddr', event)">Internal Address</a>
+  </label>
+</th><td>
+  <input name="form.owner[0].internalAddr" maxlength="40" size="20" value="ABC 123" id="form.owner[0].internalAddr" style="width:300" type="text">
+</td></tr>
+
+<tr bgcolor="#FFFFFF"><th width="25%" bgcolor="#EFEFEF" align="left">
+  <label for="form.owner[0].streetAddr">
+  <font color="red">*</font>
+  <a href="javascript:popHelp('https://www.uspto.gov/trademarks/teas/teas-help.jsp#StreetAddress')" onfocus="return show_tip('owner.streetAddr', event)" onblur="return hide_tip()" onmouseout="return hide_tip()" onmouseover="return show_tip('owner.streetAddr', event)" onmousemove="return show_tip('owner.streetAddr', event)">Street Address</a>
+  </label>
+</th><td>
+  <input name="form.owner[0].streetAddr" maxlength="40" size="20" value="" id="form.owner[0].streetAddr" style="width:300" type="text">
+ <br><small><b>NOTE:</b> 
+   You must limit your entry here, and for all remaining fields within this overall     
+  section (except City, see <i>below</i>), to no more than 40 characters (the storage limit for the     
+  USPTO database). You may need to abbreviate some words, e.g., St. instead of Street. Failure     
+  to do so may result in an undeliverable address, due to truncation at the 40 character limit.
+
+  </small>
+</td></tr>
+
+
+
+<tr bgcolor="#FFFFFF"><th bgcolor="#EFEFEF" align="left">
+  <label for="form.owner[0].city">
+  <font color="red">*</font>
+  <a href="javascript:popHelp('https://www.uspto.gov/trademarks/teas/teas-help.jsp#City')" onfocus="return show_tip('owner.city', event)" onblur="return hide_tip()" onmouseout="return hide_tip()" onmouseover="return show_tip('owner.city', event)" onmousemove="return show_tip('owner.city', event)">City</a>
+  </label>
+</th><td>
+  <input name="form.owner[0].city" maxlength="22" size="20" value="" id="form.owner[0].city" style="width:300" type="text">
+    <br><small><b>NOTE:</b> 
+  You must limit your entry here to no more than 22 characters.
+  </small>
+</td></tr>
+
+<tr bgcolor="#FFFFFF"><th bgcolor="#EFEFEF" align="left">
+  <label for="form.owner[0].stateList">
+  <font color="red">*</font>
+  <a href="javascript:popHelp('https://www.uspto.gov/trademarks/teas/teas-help.jsp#State')" onfocus="return show_tip('owner.state', event)" onblur="return hide_tip()" onmouseout="return hide_tip()" onmouseover="return show_tip('owner.state', event)" onmousemove="return show_tip('owner.state', event)">State</a>
+  </label>
+  <br><small>(Required for U.S. applicants)</small>
+</th><td>
+  
+  <select id="form.owner[0].stateList" name="form.owner[0].state" size="1" style="width:300" onchange="if (this.selectedIndex < this.options.length &amp;&amp; this.selectedIndex > 0) {this.form.elements['form.owner[0].country'].selectedIndex=1}">
+<option value="">Select State</option>
+<option value="AL">Alabama</option>
+<option value="AK">Alaska</option>
+<option value="AZ">Arizona</option>
+<option value="AR">Arkansas</option>
+<option value="CA">California</option>
+<option value="CO">Colorado</option>
+<option value="CT">Connecticut</option>
+<option value="DE">Delaware</option>
+<option value="DC">District of Columbia</option>
+<option value="FL">Florida</option>
+<option value="GA">Georgia</option>
+<option value="HI">Hawaii</option>
+<option value="ID">Idaho</option>
+<option value="IL">Illinois</option>
+<option value="IN">Indiana</option>
+<option value="IA">Iowa</option>
+<option value="KS">Kansas</option>
+<option value="KY">Kentucky</option>
+<option value="LA">Louisiana</option>
+<option value="ME">Maine</option>
+<option value="MD">Maryland</option>
+<option value="MA">Massachusetts</option>
+<option value="MI">Michigan</option>
+<option value="MN">Minnesota</option>
+<option value="MS">Mississippi</option>
+<option value="MO">Missouri</option>
+<option value="MT">Montana</option>
+<option value="NE">Nebraska</option>
+<option value="NV">Nevada</option>
+<option value="NH">New Hampshire</option>
+<option value="NJ">New Jersey</option>
+<option value="NM">New Mexico</option>
+<option value="NY">New York</option>
+<option value="NC">North Carolina</option>
+<option value="ND">North Dakota</option>
+<option value="OH">Ohio</option>
+<option value="OK">Oklahoma</option>
+<option value="OR">Oregon</option>
+<option value="PA">Pennsylvania</option>
+<option value="RI">Rhode Island</option>
+<option value="SC">South Carolina</option>
+<option value="SD">South Dakota</option>
+<option value="TN">Tennessee</option>
+<option value="TX">Texas</option>
+<option value="UT">Utah</option>
+<option value="VT">Vermont</option>
+<option value="VA">Virginia</option>
+<option value="WA">Washington</option>
+<option value="WV">West Virginia</option>
+<option value="WI">Wisconsin</option>
+<option value="WY">Wyoming</option>
+<option value="AA">Armed Forces Americas</option>
+<option value="AE">Armed Forces Europe/Middle East/Canada</option>
+<option value="AP">Armed Forces Pacific</option>
+</select>
+  
+  <br><small>
+  <b>NOTE:</b> You must include as part of the "City" entry any information related to geographical regions     
+      (e.g., provinces) not found in the dropdown lists for "States" or "Countries." Enter the city and then the geographical     
+      region, separated by a comma (e.g., Toronto, Ontario). In most instances, you will then also have to select the country     
+      within which the region is found, below. 
+
+</small>
+</td></tr>
+
+
+<tr bgcolor="#FFFFFF"><th bgcolor="#EFEFEF" align="left">
+  <label for="form.owner[0].country">
+  <font color="red">*</font>
+  <a href="javascript:popHelp('https://www.uspto.gov/trademarks/teas/teas-help.jsp#Country')" onfocus="return show_tip('Owner.country', event)" onblur="return hide_tip()" onmouseout="return hide_tip()" onmouseover="return show_tip('Owner.country', event)" onmousemove="return show_tip('Owner.country', event)">Country or U.S. Territory</a>
+  </label>
+</th><td bgcolor="#FFFFFF">
+  <select id="form.owner[0].country" name="form.owner[0].country" size="1" style="width:300" onchange="if (this.selectedIndex > 1 &amp;&amp; this.value!='USA') {this.form.elements['form.owner[0].state'].selectedIndex=0;} if((this.value =='USA' || this.value =='USX') &amp;&amp; this.form.elements['form.owner[0].state'].selectedIndex==61){this.form.elements['form.owner[0].state'].selectedIndex=0;}">
+<option value="">Select Country or U.S. Territory</option>
+<option value="USX">United States</option>
+<option value="AFX">Afghanistan</option>
+<option value="ALX">Albania</option>
+<option value="DZX">Algeria</option>
+<option value="ASX">American Samoa</option>
+<option value="ADX">Andorra</option>
+<option value="AOX">Angola</option>
+<option value="AIX">Anguilla</option>
+<option value="AGX">Antigua and Barbuda</option>
+<option value="ARX">Argentina</option>
+<option value="AMX">Armenia</option>
+<option value="AWX">Aruba</option>
+<option value="AUX">Australia</option>
+<option value="ATX">Austria</option>
+<option value="AZX">Azerbaijan</option>
+<option value="BSX">Bahamas</option>
+<option value="BHX">Bahrain</option>
+<option value="BDX">Bangladesh</option>
+<option value="BBX">Barbados</option>
+<option value="BYX">Belarus</option>
+<option value="BEX">Belgium</option>
+<option value="BZX">Belize</option>
+<option value="BJX">Benin</option>
+<option value="BMX">Bermuda</option>
+<option value="BQX">BES Islands</option>
+<option value="BTX">Bhutan</option>
+<option value="BOX">Bolivia</option>
+<option value="BAX">Bosnia and Herzegovina</option>
+<option value="BWX">Botswana</option>
+<option value="BVX">Bouvet Island</option>
+<option value="BRX">Brazil</option>
+<option value="IOX">British Indian Ocean Territory</option>
+<option value="VGX">British Virgin Islands</option>
+<option value="BNX">Brunei Darussalam</option>
+<option value="BGX">Bulgaria</option>
+<option value="BFX">Burkina Faso</option>
+<option value="BIX">Burundi</option>
+<option value="CIX">Côte d'Ivoire</option>
+<option value="KHX">Cambodia</option>
+<option value="CMX">Cameroon</option>
+<option value="CAX">Canada</option>
+<option value="CVX">Cabo Verde</option>
+<option value="KYX">Cayman Islands</option>
+<option value="CFX">Centralican Republic</option>
+<option value="TDX">Chad</option>
+<option value="CLX">Chile</option>
+<option value="CNX">China</option>
+<option value="CXX">Christmas Island</option>
+<option value="CCX">Cocos Islands</option>
+<option value="COX">Colombia</option>
+<option value="KMX">Comoros</option>
+<option value="CGX">Congo</option>
+<option value="CKX">Cook Islands</option>
+<option value="CRX">Costa Rica</option>
+<option value="HRX">Croatia</option>
+<option value="CUX">Cuba</option>
+<option value="CWX">Curacao</option>
+<option value="CYX">Cyprus</option>
+<option value="CZX">Czech Republic</option>
+<option value="DKX">Denmark</option>
+<option value="DJX">Djibouti</option>
+<option value="DMX">Dominica</option>
+<option value="DOX">Dominican Republic</option>
+<option value="ECX">Ecuador</option>
+<option value="EGX">Egypt</option>
+<option value="SVX">El Salvador</option>
+<option value="GB2">England</option>
+<option value="GQX">Equatorial Guinea</option>
+<option value="ERX">Eritrea</option>
+<option value="EEX">Estonia</option>
+<option value="ETX">Ethiopia</option>
+<option value="FKX">Falkland Islands</option>
+<option value="FOX">Faroe Islands</option>
+<option value="FJX">Fiji</option>
+<option value="FIX">Finland</option>
+<option value="FRX">France</option>
+<option value="GFX">French Guiana</option>
+<option value="PFX">French Polynesia</option>
+<option value="GAX">Gabon</option>
+<option value="GMX">Gambia</option>
+<option value="GEX">Georgia</option>
+<option value="DEX">Germany</option>
+<option value="GHX">Ghana</option>
+<option value="GIX">Gibraltar</option>
+<option value="GB3">Great Britain</option>
+<option value="GRX">Greece</option>
+<option value="GLX">Greenland</option>
+<option value="GDX">Grenada</option>
+<option value="GPX">Guadeloupe</option>
+<option value="GUX">Guam</option>
+<option value="GTX">Guatemala</option>
+<option value="GGX">Guernsey</option>
+<option value="GNX">Guinea</option>
+<option value="GWX">Guinea-Bissau</option>
+<option value="GYX">Guyana</option>
+<option value="HTX">Haiti</option>
+<option value="HMX">Heard Island and McDonald Islands</option>
+<option value="HNX">Honduras</option>
+<option value="HKX">Hong Kong</option>
+<option value="HUX">Hungary</option>
+<option value="ISX">Iceland</option>
+<option value="INX">India</option>
+<option value="IDX">Indonesia</option>
+<option value="IRX">Iran</option>
+<option value="IQX">Iraq</option>
+<option value="IEX">Ireland</option>
+<option value="GB4">Isle of Man</option>
+<option value="ILX">Israel</option>
+<option value="ITX">Italy</option>
+<option value="JMX">Jamaica</option>
+<option value="JPX">Japan</option>
+<option value="JEX">Jersey</option>
+<option value="JTX">Johnston Atoll</option>
+<option value="JOX">Jordan</option>
+<option value="KZX">Kazakhstan</option>
+<option value="KEX">Kenya</option>
+<option value="KIX">Kiribati</option>
+<option value="KPX">Korea, North</option>
+<option value="KRX">Korea, South</option>
+<option value="KWX">Kuwait</option>
+<option value="KGX">Kyrgyzstan</option>
+<option value="LAX">Laos</option>
+<option value="LVX">Latvia</option>
+<option value="LBX">Lebanon</option>
+<option value="LSX">Lesotho</option>
+<option value="LRX">Liberia</option>
+<option value="LYX">Libya</option>
+<option value="LIX">Liechtenstein</option>
+<option value="LTX">Lithuania</option>
+<option value="LUX">Luxembourg</option>
+<option value="MOX">Macau</option>
+<option value="MKX">Macedonia</option>
+<option value="MGX">Madagascar</option>
+<option value="MWX">Malawi</option>
+<option value="MYX">Malaysia</option>
+<option value="MVX">Maldives</option>
+<option value="MLX">Mali</option>
+<option value="MTX">Malta</option>
+<option value="MHX">Marshall Islands</option>
+<option value="MQX">Martinique</option>
+<option value="MRX">Mauritania</option>
+<option value="MUX">Mauritius</option>
+<option value="YTX">Mayotte</option>
+<option value="MXX">Mexico</option>
+<option value="FMX">Micronesia</option>
+<option value="MDX">Moldova</option>
+<option value="MCX">Monaco</option>
+<option value="MNX">Mongolia</option>
+<option value="MSX">Montserrat</option>
+<option value="MAX">Morocco</option>
+<option value="MEX">Montenegro</option>
+<option value="MZX">Mozambique</option>
+<option value="MMX">Myanmar</option>
+<option value="NAX">Namibia</option>
+<option value="NRX">Nauru</option>
+<option value="NVX">Navassa Island</option>
+<option value="NPX">Nepal</option>
+<option value="NLX">Netherlands</option>
+<option value="NZX">New Zealand</option>
+<option value="NIX">Nicaragua</option>
+<option value="NEX">Niger</option>
+<option value="NGX">Nigeria</option>
+<option value="GB5">Northern Ireland</option>
+<option value="MPX">Northern Mariana Islands</option>
+<option value="NOX">Norway</option>
+<option value="OMX">Oman</option>
+<option value="PKX">Pakistan</option>
+<option value="PWX">Palau</option>
+<option value="PAX">Panama</option>
+<option value="PGX">Papua New Guinea</option>
+<option value="PYX">Paraguay</option>
+<option value="PEX">Peru</option>
+<option value="PHX">Philippines</option>
+<option value="PLX">Poland</option>
+<option value="PTX">Portugal</option>
+<option value="PRX">Puerto Rico</option>
+<option value="QAX">Qatar</option>
+<option value="ROX">Romania</option>
+<option value="RUX">Russia</option>
+<option value="RWX">Rwanda</option>
+<option value="KNX">Saint Kitts and Nevis</option>
+<option value="LCX">Saint Lucia</option>
+<option value="VCX">Saint Vincent and Grenadines</option>
+<option value="OOX">Samoa</option>
+<option value="SMX">San Marino</option>
+<option value="STX">Sao Tome and Principe</option>
+<option value="SAX">Saudi Arabia</option>
+<option value="GB6">Scotland</option>
+<option value="SNX">Senegal</option>
+<option value="RSX">Serbia</option>
+<option value="SCX">Seychelles</option>
+<option value="SLX">Sierra Leone</option>
+<option value="SGX">Singapore</option>
+<option value="SKX">Slovakia</option>
+<option value="SIX">Slovenia</option>
+<option value="SBX">Solomon Islands</option>
+<option value="SOX">Somalia</option>
+<option value="ZAX">South Africa</option>
+<option value="ESX">Spain</option>
+<option value="LKX">Sri Lanka</option>
+<option value="SXX">St. Maarten</option>
+<option value="SDX">Sudan</option>
+<option value="SRX">Suriname</option>
+<option value="SZX">Swaziland</option>
+<option value="SEX">Sweden</option>
+<option value="CHX">Switzerland</option>
+<option value="SYX">Syria</option>
+<option value="TWX">Taiwan</option>
+<option value="TJX">Tajikistan</option>
+<option value="TZX">Tanzania</option>
+<option value="THX">Thailand</option>
+<option value="TLX">Timor-Leste</option>
+<option value="TGX">Togo</option>
+<option value="TOX">Tonga</option>
+<option value="TTX">Trinidad and Tobago</option>
+<option value="TNX">Tunisia</option>
+<option value="TRX">Turkey</option>
+<option value="TMX">Turkmenistan</option>
+<option value="TCX">Turks/Caicos Islands</option>
+<option value="TVX">Tuvalu</option>
+<option value="UGX">Uganda</option>
+<option value="UAX">Ukraine</option>
+<option value="AEX">United Arab Emirates</option>
+<option value="GBX">United Kingdom</option>
+<option value="USA">United States</option>
+<option value="UYX">Uruguay</option>
+<option value="VIX">US Virgin Islands</option>
+<option value="UZX">Uzbekistan</option>
+<option value="VUX">Vanuatu</option>
+<option value="VAX">Vatican City</option>
+<option value="VEX">Venezuela</option>
+<option value="VNX">Vietnam</option>
+<option value="WKX">Wake Island</option>
+<option value="GB7">Wales</option>
+<option value="WFX">Wallis and Futuna</option>
+<option value="PSX">West Bank/Gaza</option>
+<option value="EHX">Western Sahara</option>
+<option value="YEX">Yemen</option>
+<option value="ZMX">Zambia</option>
+<option value="ZWX">Zimbabwe</option>
+</select>
+</td></tr>
+
+<tr bgcolor="#FFFFFF"><th bgcolor="#EFEFEF" align="left">
+  <label for="form.owner[0].zipCode">
+  <font color="red">*</font>
+  <a href="javascript:popHelp('https://www.uspto.gov/trademarks/teas/teas-help.jsp#ZipCodePostalCode')" onfocus="return show_tip('owner.zipcode', event)" onblur="return hide_tip()" onmouseout="return hide_tip()" onmouseover="return show_tip('owner.zipcode', event)" onmousemove="return show_tip('owner.zipcode', event)">Zip/Postal Code</a>
+  </label>
+  <br><small>(Required for U.S. applicants)</small>
+</th><td>
+  <input name="form.owner[0].zipCode" maxlength="40" size="20" value="" id="form.owner[0].zipCode" style="width:300" type="text">
+</td></tr>
+
+<tr bgcolor="#FFFFFF"><th bgcolor="#EFEFEF" align="left">
+  <label for="phone_0">
+  <a href="javascript:popHelp('https://www.uspto.gov/trademarks/teas/teas-help.jsp#PhoneNumber')" onfocus="return show_tip('owner.phone', event)" onblur="return hide_tip()" onmouseout="return hide_tip()" onmouseover="return show_tip('owner.phone', event)" onmousemove="return show_tip('owner.phone', event)">Phone Number</a>
+  </label>
+</th><td>
+  
+  <select name="form.owner[0].phoneCountryCode" onchange="countryCodeChanged()" id="selectclass" title="Pick the country for phone number.
+"><option value="+0-" selected="">United States</option><option value="+93-">Afghanistan</option><option value="+355-">Albania</option><option value="+213-">Algeria</option><option value="+376-">Andorra</option><option value="+244-">Angola</option><option value="+54-">Argentina</option><option value="+374-">Armenia</option><option value="+297-">Aruba</option><option value="+61-">Australia</option><option value="+43-">Austria</option><option value="+994-">Azerbaijan</option><option value="+973-">Bahrain</option><option value="+880-">Bangladesh</option><option value="+375-">Belarus</option><option value="+32-">Belgium</option><option value="+501-">Belize</option><option value="+229-">Benin</option><option value="+975-">Bhutan</option><option value="+591-">Bolivia</option><option value="+387-">Bosnia and Herzegovina</option><option value="+267-">Botswana</option><option value="+55-">Brazil</option><option value="+246-">British Indian Ocean Territory</option><option value="+673-">Brunei Darussalam</option><option value="+359-">Bulgaria</option><option value="+226-">Burkina Faso</option><option value="+257-">Burundi</option><option value="+855-">Cambodia</option><option value="+237-">Cameroon</option><option value="+1-">Canada</option><option value="+238-">Cape Verde</option><option value="+599-">Caribbean Netherlands</option><option value="+236-">Central African Republic</option><option value="+235-">Chad</option><option value="+56-">Chile</option><option value="+86-">China</option><option value="+61-">Christmas Island</option><option value="+61-">Cocos (Keeling) Islands</option><option value="+57-">Colombia</option><option value="+269-">Comoros</option><option value="+243-">Congo, Democratic Republic of the</option><option value="+242-">Congo, Republic of the</option><option value="+682-">Cook Islands</option><option value="+506-">Costa Rica</option><option value="+385-">Croatia</option><option value="+53-">Cuba</option><option value="+357-">Cyprus</option><option value="+420-">Czech Republic</option><option value="+45-">Denmark</option><option value="+253-">Djibouti</option><option value="+593-">Ecuador</option><option value="+20-">Egypt</option><option value="+503-">El Salvador</option><option value="+240-">Equatorial Guinea</option><option value="+291-">Eritrea</option><option value="+372-">Estonia</option><option value="+251-">Ethiopia</option><option value="+500-">Falkland Islands</option><option value="+298-">Faroe Islands</option><option value="+679-">Fiji</option><option value="+358-">Finland</option><option value="+33-">France</option><option value="+594-">French Guiana</option><option value="+689-">French Polynesia</option><option value="+241-">Gabon</option><option value="+220-">Gambia</option><option value="+995-">Georgia</option><option value="+49-">Germany</option><option value="+233-">Ghana</option><option value="+350-">Gibraltar</option><option value="+30-">Greece</option><option value="+299-">Greenland</option><option value="+590-">Guadeloupe</option><option value="+502-">Guatemala</option><option value="+44-">Guernsey</option><option value="+224-">Guinea</option><option value="+245-">Guinea-Bissau</option><option value="+592-">Guyana</option><option value="+509-">Haiti</option><option value="+504-">Honduras</option><option value="+852-">Hong Kong</option><option value="+36-">Hungary</option><option value="+354-">Iceland</option><option value="+91-">India</option><option value="+62-">Indonesia</option><option value="+98-">Iran</option><option value="+964-">Iraq</option><option value="+353-">Ireland</option><option value="+972-">Israel</option><option value="+39-">Italy</option><option value="+81-">Japan</option><option value="+44-">Jersey</option><option value="+962-">Jordan</option><option value="+7-">Kazakhstan</option><option value="+254-">Kenya</option><option value="+686-">Kiribati</option><option value="+850-">Korea, North</option><option value="+82-">Korea, South</option><option value="+965-">Kuwait</option><option value="+996-">Kyrgyzstan</option><option value="+856-">Laos</option><option value="+371-">Latvia</option><option value="+961-">Lebanon</option><option value="+266-">Lesotho</option><option value="+231-">Liberia</option><option value="+218-">Libya</option><option value="+423-">Liechtenstein</option><option value="+370-">Lithuania</option><option value="+352-">Luxembourg</option><option value="+853-">Macau</option><option value="+389-">Macedonia</option><option value="+261-">Madagascar</option><option value="+265-">Malawi</option><option value="+60-">Malaysia</option><option value="+960-">Maldives</option><option value="+223-">Mali</option><option value="+356-">Malta</option><option value="+692-">Marshall Islands</option><option value="+596-">Martinique</option><option value="+222-">Mauritania</option><option value="+230-">Mauritius</option><option value="+262-">Mayotte</option><option value="+52-">Mexico</option><option value="+691-">Micronesia</option><option value="+373-">Moldova</option><option value="+377-">Monaco</option><option value="+976-">Mongolia</option><option value="+382-">Montenegro</option><option value="+212-">Morocco</option><option value="+258-">Mozambique</option><option value="+95-">Myanmar</option><option value="+264-">Namibia</option><option value="+674-">Nauru</option><option value="+977-">Nepal</option><option value="+31-">Netherlands</option><option value="+64-">New Zealand</option><option value="+505-">Nicaragua</option><option value="+227-">Niger</option><option value="+234-">Nigeria</option><option value="+44-">Northern Ireland</option><option value="+47-">Norway</option><option value="+968-">Oman</option><option value="+92-">Pakistan</option><option value="+680-">Palau</option><option value="+507-">Panama</option><option value="+675-">Papua New Guinea</option><option value="+595-">Paraguay</option><option value="+51-">Peru</option><option value="+63-">Philippines</option><option value="+48-">Poland</option><option value="+351-">Portugal</option><option value="+974-">Qatar</option><option value="+40-">Romania</option><option value="+7-">Russia</option><option value="+250-">Rwanda</option><option value="+378-">San Marino</option><option value="+966-">Saudi Arabia</option><option value="+248-">Seychelles</option><option value="+232-">Sierra Leone</option><option value="+65-">Singapore</option><option value="+421-">Slovakia</option><option value="+386-">Slovenia</option><option value="+677-">Solomon Islands</option><option value="+252-">Somalia</option><option value="+27-">South Africa</option><option value="+34-">Spain</option><option value="+94-">Sri Lanka</option><option value="+249-">Sudan</option><option value="+597-">Suriname</option><option value="+268-">Swaziland</option><option value="+46-">Sweden</option><option value="+41-">Switzerland</option><option value="+963-">Syria</option><option value="+886-">Taiwan</option><option value="+992-">Tajikistan</option><option value="+255-">Tanzania</option><option value="+66-">Thailand</option><option value="+228-">Togo</option><option value="+676-">Tonga</option><option value="+90-">Turkey</option><option value="+993-">Turkmenistan</option><option value="+688-">Tuvalu</option><option value="+256-">Uganda</option><option value="+380-">Ukraine</option><option value="+971-">United Arab Emirates</option><option value="+44-">United Kingdom</option><option value="+598-">Uruguay</option><option value="+678-">Vanuatu</option><option value="+58-">Venezuela</option><option value="+39-">Vatican City State (Holy See)</option><option value="+84-">Vietnam</option><option value="+681-">Wallis and Futuna</option><option value="+260-">Zambia</option><option value="+263-">Zimbabwe</option><option value="+00-">Other</option></select>
+
+  <input name="form.owner[0].phone" maxlength="22" value="" id="phone_0" style="width:300" type="text"> 
+  <label for="ext_0">
+  Ext. 
+  </label>
+  <input name="form.owner[0].ext" maxlength="6" value="" id="ext_0" style="width:60" type="text">
+ 
+  
+
+</td></tr>
+
+<tr bgcolor="#FFFFFF"><th bgcolor="#EFEFEF" align="left">
+  <label for="form.owner[0].fax">
+  <a href="javascript:popHelp('https://www.uspto.gov/trademarks/teas/teas-help.jsp#FaxNumber')" onfocus="return show_tip('owner.fax', event)" onblur="return hide_tip()" onmouseout="return hide_tip()" onmouseover="return show_tip('owner.fax', event)" onmousemove="return show_tip('owner.fax', event)">Fax Number</a>
+  </label>
+</th><td>
+  <input name="form.owner[0].fax" size="20" value="" id="form.owner[0].fax" style="width:300" type="text">
+</td></tr>
+
+<tr bgcolor="#FFFFFF"><th bgcolor="#EFEFEF" align="left">
+
+  <label for="form.owner[0].email">
+  <a href="javascript:popHelp('https://www.uspto.gov/trademarks/teas/teas-help.jsp#InternetE-MailAddress')" onfocus="return show_tip('owner.email', event)" onblur="return hide_tip()" onmouseout="return hide_tip()" onmouseover="return show_tip('owner.email', event)" onmousemove="return show_tip('owner.email', event)">Internet<br>E-mail Address</a>
+  </label>
+</th><td>
+   <input name="form.owner[0].email" size="20" value="" id="form.owner[0].email" style="width:300" type="text">
+  <a href="javascript:popHelp('https://www.uspto.gov/trademarks/teas/teas-help.jsp#Reminder')" onfocus="return show_tip('email.reminder', event)" onblur="return hide_tip()" onmouseout="return hide_tip()" onmouseover="return show_tip('email.reminder', event)" onmousemove="return show_tip('email.reminder', event)">
+  <img src="/forms/styles/note.gif" alt="Reminder" width="20" border="0" align="absmiddle"></a>
+  <br>
+
+  While the application may list an e-mail address for the applicant, only the e-mail address of the applicant's attorney or domestic
+  representative will be used for actual correspondence purpose, in accordance with <a href="javascript:popHelp('https://www.uspto.gov/trademarks/teas/teas-help.jsp#OfficePolicy')" onfocus="return show_tip('email.policy', event)" onblur="return hide_tip()" onmouseout="return hide_tip()" onmouseover="return show_tip('email.policy', event)" onmousemove="return show_tip('email.policy', event)">USPTO policy</a>.
+
+</td></tr>
+
+
+<input name="form.owner[0].validateMailAuth" value="false" type="hidden">
+
+
+<tr bgcolor="#FFFFFF"><th bgcolor="#EFEFEF" align="left">
+  <label for="form.owner[0].website">
+  <a href="javascript:popHelp('https://www.uspto.gov/trademarks/teas/teas-help.jsp#Websiteaddress')" onfocus="return show_tip('owner.website', event)" onblur="return hide_tip()" onmouseout="return hide_tip()" onmouseover="return show_tip('owner.website', event)" onmousemove="return show_tip('owner.website', event)">Website address</a>
+  </label>
+</th><td>
+  <input name="form.owner[0].website" size="20" value="" id="form.owner[0].website" style="width:300" type="text">
+</td></tr>
+
+
+</tbody></table>
+</td></tr></tbody></table>
+
+<input name="page.position" type="hidden">
+<input name="form.edMode" type="hidden">
+<input name="form.edNext" value="0" type="hidden">
+</p><hr noshade="" size="2" color="black">
+
+<input value="Go Back" class="button" style="width:140" onclick="go(this, 'back')" type="button">
+<input value="Add Owner" class="button" style="width:140" onclick="add(this)" type="button">
+<input value="Continue" class="button" style="width:140" onclick="go(this, 'next')" type="button">
+
+
+</span></td></tr>
+
+<tr><td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p align="center">
+<!--  for the footer information -->
+<a href="https://www.uspto.gov/privacy-policy" target="_blank" class="small">Burden/Privacy Statement</a>
+
+ | <a href="https://www.uspto.gov/trademarks/teas/pra.jsp#heading-1" target="_blank" class="small">TEAS Form Burden Statement</a> 
+
+
+
+</p>
+<script>
+function IeVersion() {
+   //Set defaults
+   var value = {
+       IsIE: false,
+       TrueVersion: 0,
+       ActingVersion: 0,
+       CompatibilityMode: false
+   };
+
+   //Try to find the Trident version number
+   var trident = navigator.userAgent.match(/Trident\/(\d+)/);
+   if (trident) {
+       value.IsIE = true;
+       //Convert from the Trident version number to the IE version number
+       value.TrueVersion = parseInt(trident[1], 10) + 4;
+   }
+
+   //Try to find the MSIE number
+   var msie = navigator.userAgent.match(/MSIE (\d+)/);
+   if (msie) {
+       value.IsIE = true;
+       //Find the IE version number from the user agent string
+       value.ActingVersion = parseInt(msie[1]);
+   } else {
+       //Must be IE 11 in "edge" mode
+       value.ActingVersion = value.TrueVersion;
+   }
+
+   //If we have both a Trident and MSIE version number, see if they're different
+   if (value.IsIE && value.TrueVersion > 0 && value.ActingVersion > 0) {
+       //In compatibility mode if the trident number doesn't match up with the MSIE number
+       value.CompatibilityMode = value.TrueVersion != value.ActingVersion;
+   }
+   return value;
+}
+
+var ie = IeVersion();
+
+if (ie.IsIE && ie.CompatibilityMode){
+   $('#ieCompatibilityVew').val('true');
+}
+   
+</script>
+
+</td></tr>
+
+</tbody></table>
+
+
+
+</form>
+<form style="display:none;" id="auxform" name="auxform" method="post" action="/forms/view/BAS/idconfirmtool.jsp">
+	<input id="op" name="op" value="2" type="hidden">
+	<input id="text" name="text" value="" type="hidden">
+</form>
+</td></tr>
+<tr><td align="center">
+<hr noshade="" size="4" color="#71819b">
+<a href="http://teas.uspto.gov/teas/helpdesk.htm">Help Desk</a>
+ | <a href="https://www.uspto.gov/teas/bug-report.htm">Bug Report</a>
+ | <a href="mailto:TEAS@uspto.gov" onmousedown="dataLayer.push({'event': 'eventTracker', 'eventCat': 'Email Clicks', 'eventAct':'Click', 'eventLbl': 'teas@uspto.gov', 'eventVal': 0, 'nonInteraction': 0});">Feedback</a>
+ | <a href="http://teas.uspto.gov/teas/index.html">TEAS Home</a>
+ | <a href="https://www.uspto.gov/main/trademarks.htm">Trademark Home</a>
+ | <a href="https://www.uspto.gov/">USPTO</a>
+</td></tr>
+<tr><td class="small" align="right">Fri Aug 11 10:29:06 EDT 2017</td></tr>
+</tbody></table>
+</center>
+
+<script type="text/javascript" id="">var domains_to_track=["uspto.gov","sharepoint.com"],folders_to_track="",extDoc=".doc .docx .xls .xlsx .xlsm .ppt .pptx .exe .zip .pdf .js .txt .csv".split(" "),socSites="",isSubDomainTracker=!1,isSeparateDomainTracker=!1,isGTM=!0,eValues={downloads:{category:"Assets",action:"Download",label:"",value:0,nonInteraction:0},outbound_downloads:{category:"Outbound Assets",action:"Download",label:"",value:0,nonInteraction:0},outbounds:{category:"Outbound Links",action:"Click",label:"",value:0,nonInteraction:0},
+email:{category:"Email Clicks",action:"Click",label:"",value:0,nonInteraction:0},outbound_email:{category:"Outbound Email Clicks",action:"Click",label:"",value:0,nonInteraction:0},telephone:{category:"Telephone Clicks",action:"Click",label:"",value:0,nonInteraction:0},social:{category:"Social Profiles",action:"Click",label:"",value:0,nonInteraction:0}},mainDomain=document.location.hostname.match(/(([^.\/]+\.[^.\/]{2,3}\.[^.\/]{2})|(([^.\/]+\.)[^.\/]{2,4}))(\/.*)?$/)[1],mainDomain=mainDomain.toLowerCase();
+1==isSubDomainTracker&&(mainDomain=document.location.hostname.replace("www.","").toLowerCase());var arr=document.getElementsByTagName("a");
+for(i=0;i<arr.length;i++){var flag=0,mDownAtt=arr[i].getAttribute("onmousedown"),doname="",linkType="",mailPattern=/^mailto\:[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}/i,urlPattern=/^(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/i,telPattern=/^tel\:(.*)([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/i;if(mailPattern.test(arr[i].href)||urlPattern.test(arr[i].href)||telPattern.test(arr[i].href)){try{!urlPattern.test(arr[i].href)||mailPattern.test(arr[i].href)||
+telPattern.test(arr[i].href)?!mailPattern.test(arr[i].href)||telPattern.test(arr[i].href)||urlPattern.test(arr[i].href)?!telPattern.test(arr[i].href)||urlPattern.test(arr[i].href)||mailPattern.test(arr[i].href)||(doname=arr[i].href.toLowerCase(),linkType="tel"):(doname=arr[i].href.toLowerCase().split("@")[1],linkType="mail"):(doname=arr[i].hostname.toLowerCase().replace("www.",""),linkType="url")}catch(a){continue}if(null!=mDownAtt&&(mDownAtt=String(mDownAtt),-1<mDownAtt.indexOf("dataLayer.push")||
+-1<mDownAtt.indexOf("('send'")))continue;var condition=!1;if(condition=isSeparateDomainTracker?doname==mainDomain:-1!=doname.indexOf(mainDomain))if("mail"===linkType)eValues.email.label=arr[i].href.toLowerCase().match(/[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}/i),_tagLinks(arr[i],eValues.email.category,eValues.email.action,eValues.email.label,eValues.email.value,eValues.email.nonInteraction,mDownAtt);else{if("url"===linkType){var gateOutboundLink=/^https?:\/\/(www\.)?tmsearch\.uspto\.gov\/bin\/gate\.exe.*$/ig;
+gateOutboundLink.test(arr[i].href)?(eValues.outbounds.label=arr[i].href.toLowerCase().replace("www.","").split("//")[1],_tagLinks(arr[i],eValues.outbounds.category,eValues.outbounds.action,eValues.outbounds.label,eValues.outbounds.value,eValues.outbounds.nonInteraction,mDownAtt)):""==folders_to_track||_isInternalFolder(arr[i].href)?_isDownload(arr[i].href)&&(_setDownloadData(arr[i].href,doname),_tagLinks(arr[i],eValues.downloads.category,eValues.downloads.action,eValues.downloads.label,eValues.downloads.value,
+eValues.downloads.nonInteraction,mDownAtt)):_isDownload(arr[i].href)?(_setDownloadData(arr[i].href,doname),_tagLinks(arr[i],eValues.outbound_downloads.category,eValues.outbound_downloads.action,eValues.outbound_downloads.label,eValues.outbound_downloads.value,eValues.outbound_downloads.nonInteraction,mDownAtt)):(eValues.outbounds.label=arr[i].href.toLowerCase().replace("www.","").split("//")[1],_tagLinks(arr[i],eValues.outbounds.category,eValues.outbounds.action,eValues.outbounds.label,eValues.outbounds.value,
+eValues.outbounds.nonInteraction,mDownAtt))}}else for(var k=0;k<domains_to_track.length;k++){var condition1=!1,condition1=isSeparateDomainTracker?doname==domains_to_track[k]:-1!=doname.indexOf(domains_to_track[k]);condition1?"mail"===linkType?(eValues.email.label=arr[i].href.toLowerCase().match(/[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}/i),_tagLinks(arr[i],eValues.email.category,eValues.email.action,eValues.email.label,eValues.email.value,eValues.email.nonInteraction,mDownAtt)):"url"===linkType&&
+(""==folders_to_track||_isInternalFolder(arr[i].href)?_isDownload(arr[i].href)&&(_setDownloadData(arr[i].href,doname),_tagLinks(arr[i],eValues.downloads.category,eValues.downloads.action,eValues.downloads.label,eValues.downloads.value,eValues.downloads.nonInteraction,mDownAtt)):_isDownload(arr[i].href)?(_setDownloadData(arr[i].href,doname),_tagLinks(arr[i],eValues.outbound_downloads.category,eValues.outbound_downloads.action,eValues.outbound_downloads.label,eValues.outbound_downloads.value,eValues.outbound_downloads.nonInteraction,
+mDownAtt)):(eValues.outbounds.label=arr[i].href.replace("www.","").split("//")[1],_tagLinks(arr[i],eValues.outbounds.category,eValues.outbounds.action,eValues.outbounds.label,eValues.outbounds.value,eValues.outbounds.nonInteraction,mDownAtt))):(flag++,flag==domains_to_track.length&&("mail"===linkType&&(eValues.outbound_email.label=arr[i].href.toLowerCase().match(/[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}/),_tagLinks(arr[i],eValues.outbound_email.category,eValues.outbound_email.action,eValues.outbound_email.label,
+eValues.outbound_email.value,eValues.outbound_email.nonInteraction,mDownAtt)),"tel"===linkType&&(eValues.telephone.label=arr[i].href.toLowerCase().split("tel:")[1],_tagLinks(arr[i],eValues.telephone.category,eValues.telephone.action,eValues.telephone.label,eValues.telephone.value,eValues.telephone.nonInteraction,mDownAtt)),"url"===linkType&&(_isDownload(arr[i].href)?(_setDownloadData(arr[i].href,doname),_tagLinks(arr[i],eValues.outbound_downloads.category,eValues.outbound_downloads.action,eValues.outbound_downloads.label,
+eValues.outbound_downloads.value,eValues.outbound_downloads.nonInteraction,mDownAtt)):_isSocial(arr[i].href)?(eValues.social.label=arr[i].href.toLowerCase().replace("www.","").split("//")[1],eValues.social.action=eValues.social.label.split(".")[0],_tagLinks(arr[i],eValues.social.category,eValues.social.action,eValues.social.label,eValues.social.value,eValues.social.nonInteraction,mDownAtt)):(eValues.outbounds.label=arr[i].href.toLowerCase().replace("www.","").split("//")[1],_tagLinks(arr[i],eValues.outbounds.category,
+eValues.outbounds.action,eValues.outbounds.label,eValues.outbounds.value,eValues.outbounds.nonInteraction,mDownAtt)))))}}}function _isSocial(a){return""!=socSites?null!=a.toLowerCase().replace(/[+#]/,"").match(new RegExp("^(.*)("+socSites.toLowerCase()+")(.*)$"))?!0:!1:!1}function _isInternalFolder(a){return""!=folders_to_track?null!=a.toLowerCase().match(new RegExp("^(.*)("+folders_to_track+")(.*)$"))?!0:!1:!1}
+function _isDownload(a){for(var d=0,b=0;b<extDoc.length;b++){var c=a.split("."),c=c[c.length-1].split(/[#?&?]/);if("."+c[0].toLowerCase()==extDoc[b])return!0;d++;if(d==extDoc.length)return!1}}function _setDownloadData(a,d){var b=a.toLowerCase().split("."),b=b[b.length-1].split(/[#?&?]/),c=a.toLowerCase().split(d),c=c[1].split(/[#?&?]/);eValues.downloads.action=eValues.outbound_downloads.action=b;eValues.downloads.label=eValues.outbound_downloads.label=c}
+function _tagLinks(a,d,b,c,f,g,e){isGTM?a.setAttribute("onmousedown",""+(null!=e?e+"; ":"")+"dataLayer.push({'event': 'eventTracker', 'eventCat': '"+d+"', 'eventAct':'"+b+"', 'eventLbl': '"+c+"', 'eventVal': "+f+", 'nonInteraction': "+g+"});"):a.setAttribute("onmousedown",""+(null!=e?e+"; ":"")+"ga('send', 'event', '"+d+"', '"+b+"', '"+c+"', "+f+", {nonInteraction:("+g+" \x3d\x3d 0) ? false : true});")};</script>
+<script type="text/javascript" id="_fed_an_ua_tag" src="https://components.uspto.gov/js/Uni-Fed-Min.js"></script>
+</body></html>

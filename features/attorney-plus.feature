@@ -8,6 +8,7 @@ Feature: Capture applicant information on TEAS Plus as attorney
     Given I am filling out the "TEAS Plus" form as an "Attorney"
      When I fill in "ABC 123" for "Internal Address"
       And I click the "Continue" button
+      And I should save page as html
      Then I should see a form validation error message
 
   Scenario Outline: Prompt for correct entity information
