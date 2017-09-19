@@ -1,4 +1,4 @@
-@javascript @slow
+@slow
 Feature: Capture applicant information on TEAS Plus as attorney
   As an attorney
   I want to fill out

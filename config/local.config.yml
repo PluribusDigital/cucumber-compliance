@@ -1,0 +1,12 @@
+server: "hub-cloud.browserstack.com"
+user: "kevinmelendez2"
+key: "np7n3My92q5DAzUnJDUx"
+
+common_caps:
+  "build": "capybara-browserstack"
+  "browserstack.debug": true
+
+browser_caps:
+  -
+    "browser": "chrome"
+    "browserstack.local": true
