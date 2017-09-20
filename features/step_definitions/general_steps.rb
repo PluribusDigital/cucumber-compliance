@@ -1,4 +1,5 @@
 Given /^I am on the 'home' page$/ do
+  visit "https://teas.uspto.gov/forms"
   visit "/"
 end
 

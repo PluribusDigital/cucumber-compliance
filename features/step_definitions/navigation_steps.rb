@@ -1,7 +1,7 @@
 Given(/^I am filling out the "([^"]*)" form as an "([^"]*)"$/) do |form_name, role|
   # route to appropriate form
   if form_name == "TEAS Plus"
-    visit "/teasplus"
+    visit "https://teas.uspto.gov/forms/teasplus"
   else
     raise "form_name doesn't exist -  create in step definition"
   end
