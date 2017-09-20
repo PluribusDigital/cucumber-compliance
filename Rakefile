@@ -13,6 +13,10 @@ Cucumber::Rake::Task.new(:local) do |task|
   task.cucumber_opts = ['--format=pretty', 'features/attorney_plus.feature', 'CONFIG_NAME=local']
 end
 
+Cucumber::Rake::Task.new(:dev) do |task|
+    task.cucumber_opts = ['--format=pretty', 'features/attorney_plus.feature', 'CONFIG_NAME=dev']
+end
+
 task :parallel do |t, args|
   @num_parallel = 4
 
