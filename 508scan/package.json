@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "pa11y": "^4.11.0"
+  },
+  "scripts": {
+    "scan508": "node run508"
+  }
+}
