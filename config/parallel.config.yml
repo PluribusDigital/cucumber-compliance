@@ -13,5 +13,6 @@ browser_caps:
     "browser": "firefox"
   -
     "browser": "internet explorer"
+    "version": "11"
   -
     "browser": "safari"

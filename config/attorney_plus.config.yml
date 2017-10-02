@@ -11,3 +11,4 @@ browser_caps:
     "os": "Windows"
     "os_version": "7"
     "browser": "IE"
+    "version": "11"

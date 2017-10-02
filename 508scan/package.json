@@ -3,6 +3,6 @@
     "pa11y": "^4.11.0"
   },
   "scripts": {
-    "scan508": "node run508"
+    "scan508": "node run508 && node run508page2"
   }
 }
