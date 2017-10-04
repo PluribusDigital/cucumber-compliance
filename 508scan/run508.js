@@ -2,7 +2,7 @@ var pa11y = require('pa11y');
 
 // Create a test instance with some default options
 var test = pa11y({
-
+  standard: 'Section508',
 	// Log what's happening to the console
 	log: {
 		debug: console.log.bind(console),

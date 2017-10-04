@@ -3,6 +3,7 @@
     "pa11y": "^4.11.0"
   },
   "scripts": {
-    "scan508": "node run508 && node run508page2"
+    "scan508": "pa11y -s Section508 -c run508.js https://teas.uspto.gov",
+    "scan508page2": "pa11y -s Section508 -c run508page2.js https://teas.uspto.gov/forms/teasplus"
   }
 }

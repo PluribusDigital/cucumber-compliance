@@ -4,7 +4,7 @@ require 'cucumber/rake/task'
 
 Cucumber::Rake::Task.new(:attorney_plus) do |task|
   ENV['CONFIG_NAME'] ||= "attorney_plus"
-  task.cucumber_opts = ['--format=pretty', 'features/attorney_plus.feature']
+  task.cucumber_opts = ['--format=pretty', 'features/attorney_plus.feature', '-f json -o ./reports/results.json']
 end
 
 task :default => :attorney_plus
@@ -14,7 +14,7 @@ Cucumber::Rake::Task.new(:local) do |task|
 end
 
 Cucumber::Rake::Task.new(:dev) do |task|
-    task.cucumber_opts = ['--format=pretty', 'features/attorney_plus.feature', 'CONFIG_NAME=dev']
+    task.cucumber_opts = ['--format=pretty', 'features/attorney_plus.feature', 'CONFIG_NAME=dev', '-f json -o ./reports/results.json']
 end
 
 task :parallel do |t, args|

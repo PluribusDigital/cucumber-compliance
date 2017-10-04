@@ -19,7 +19,8 @@ npm manifest:
       "pa11y": "^4.11.0"
     },
     "scripts": {
-      "scan508": "node run508", "node run508page2"
+      "scan508": "pa11y -s Section508 -c run508.js https://teas.uspto.gov &&
+       pa11y -s Section508 -c run508page2.js https://teas.uspto.gov/forms/teasplus"
     }
   }
 
@@ -654,7 +655,8 @@ Lockfile:
       fd-slicer "~1.0.1"
 
 Trace: 
-  SyntaxError: /Users/Kevin/dvp/cucumber-docker/508scan/package.json: Unexpected token } in JSON at position 116
+  SyntaxError: /Users/Kevin/dvp/cucumber-docker/508scan/package.json: Unexpected token 
+   in JSON at position 139
       at JSON.parse (<anonymous>)
       at /usr/local/lib/node_modules/yarn/lib/cli.js:764:59
       at Generator.next (<anonymous>)

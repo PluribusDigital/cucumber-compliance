@@ -1,0 +1,694 @@
+[
+  {
+    "uri": "features/attorney_plus.feature",
+    "id": "capture-applicant-information-on-teas-plus-as-attorney",
+    "keyword": "Feature",
+    "name": "Capture applicant information on TEAS Plus as attorney",
+    "description": "  As an attorney\n  I want to fill out\n  So that I can find relevant trademark records",
+    "line": 2,
+    "tags": [
+      {
+        "name": "@slow",
+        "line": 1
+      }
+    ],
+    "elements": [
+      {
+        "id": "capture-applicant-information-on-teas-plus-as-attorney;enforce-required-fields",
+        "keyword": "Scenario",
+        "name": "Enforce required fields",
+        "description": "",
+        "line": 7,
+        "type": "scenario",
+        "tags": [
+          {
+            "name": "@slow",
+            "line": 1
+          }
+        ],
+        "before": [
+          {
+            "match": {
+              "location": "capybara-2.15.1/lib/capybara/cucumber.rb:13"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 26000
+            }
+          },
+          {
+            "match": {
+              "location": "capybara-2.15.1/lib/capybara/cucumber.rb:21"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 33000
+            }
+          },
+          {
+            "match": {
+              "location": "features/support/hooks.rb:16"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 24000
+            }
+          }
+        ],
+        "steps": [
+          {
+            "keyword": "Given ",
+            "name": "I am filling out the \"TEAS Plus\" form as an \"Attorney\"",
+            "line": 8,
+            "match": {
+              "location": "features/step_definitions/navigation_steps.rb:1"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 31010792000
+            },
+            "after": [
+              {
+                "match": {
+                  "location": "features/support/hooks.rb:6"
+                },
+                "result": {
+                  "status": "passed",
+                  "duration": 1000712000
+                }
+              },
+              {
+                "match": {
+                  "location": "features/support/hooks.rb:28"
+                },
+                "result": {
+                  "status": "passed",
+                  "duration": 769380000
+                }
+              }
+            ]
+          },
+          {
+            "keyword": "When ",
+            "name": "I fill in \"ABC 123\" for \"Internal Address\"",
+            "line": 9,
+            "match": {
+              "location": "features/step_definitions/form_steps.rb:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 829995000
+            },
+            "after": [
+              {
+                "match": {
+                  "location": "features/support/hooks.rb:6"
+                },
+                "result": {
+                  "status": "passed",
+                  "duration": 1001538000
+                }
+              },
+              {
+                "match": {
+                  "location": "features/support/hooks.rb:28"
+                },
+                "result": {
+                  "status": "passed",
+                  "duration": 246222000
+                }
+              }
+            ]
+          },
+          {
+            "keyword": "And ",
+            "name": "I click the \"Continue\" button",
+            "line": 10,
+            "match": {
+              "location": "features/step_definitions/navigation_steps.rb:18"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 354771000
+            },
+            "after": [
+              {
+                "match": {
+                  "location": "features/support/hooks.rb:6"
+                },
+                "result": {
+                  "status": "passed",
+                  "duration": 1002669000
+                }
+              },
+              {
+                "match": {
+                  "location": "features/support/hooks.rb:28"
+                },
+                "result": {
+                  "status": "passed",
+                  "duration": 257133000
+                }
+              }
+            ]
+          },
+          {
+            "keyword": "Then ",
+            "name": "I should see a form validation error message",
+            "line": 11,
+            "match": {
+              "location": "features/step_definitions/form_steps.rb:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 897575000
+            },
+            "after": [
+              {
+                "match": {
+                  "location": "features/support/hooks.rb:6"
+                },
+                "result": {
+                  "status": "passed",
+                  "duration": 1005011000
+                }
+              },
+              {
+                "match": {
+                  "location": "features/support/hooks.rb:28"
+                },
+                "result": {
+                  "status": "passed",
+                  "duration": 526855000
+                }
+              }
+            ]
+          }
+        ],
+        "after": [
+          {
+            "match": {
+              "location": "features/support/hooks.rb:20"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 151000
+            }
+          },
+          {
+            "match": {
+              "location": "capybara-2.15.1/lib/capybara/cucumber.rb:9"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 91519000
+            }
+          }
+        ]
+      },
+      {
+        "id": "capture-applicant-information-on-teas-plus-as-attorney;prompt-for-correct-entity-information;;2",
+        "keyword": "Scenario Outline",
+        "name": "Prompt for correct entity information",
+        "description": "",
+        "line": 20,
+        "type": "scenario",
+        "tags": [
+          {
+            "name": "@slow",
+            "line": 1
+          }
+        ],
+        "before": [
+          {
+            "match": {
+              "location": "capybara-2.15.1/lib/capybara/cucumber.rb:13"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 35000
+            }
+          },
+          {
+            "match": {
+              "location": "capybara-2.15.1/lib/capybara/cucumber.rb:21"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 20000
+            }
+          },
+          {
+            "match": {
+              "location": "features/support/hooks.rb:16"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 17000
+            }
+          }
+        ],
+        "steps": [
+          {
+            "keyword": "Given ",
+            "name": "I am filling out the \"TEAS Plus\" form as an \"Attorney\"",
+            "line": 20,
+            "match": {
+              "location": "features/step_definitions/navigation_steps.rb:1"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 872725000
+            },
+            "after": [
+              {
+                "match": {
+                  "location": "features/support/hooks.rb:6"
+                },
+                "result": {
+                  "status": "passed",
+                  "duration": 1001425000
+                }
+              },
+              {
+                "match": {
+                  "location": "features/support/hooks.rb:28"
+                },
+                "result": {
+                  "status": "passed",
+                  "duration": 2536734000
+                }
+              }
+            ]
+          },
+          {
+            "keyword": "When ",
+            "name": "I choose \"Partnership\" for \"Entity Type\"",
+            "line": 20,
+            "match": {
+              "location": "features/step_definitions/form_steps.rb:1"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 262649000
+            },
+            "after": [
+              {
+                "match": {
+                  "location": "features/support/hooks.rb:6"
+                },
+                "result": {
+                  "status": "passed",
+                  "duration": 1004903000
+                }
+              },
+              {
+                "match": {
+                  "location": "features/support/hooks.rb:28"
+                },
+                "result": {
+                  "status": "passed",
+                  "duration": 257763000
+                }
+              }
+            ]
+          },
+          {
+            "keyword": "Then ",
+            "name": "the \"General Partners, Active Members\" field should be displayed",
+            "line": 20,
+            "match": {
+              "location": "features/step_definitions/form_steps.rb:18"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1617229000
+            },
+            "after": [
+              {
+                "match": {
+                  "location": "features/support/hooks.rb:6"
+                },
+                "result": {
+                  "status": "passed",
+                  "duration": 1001236000
+                }
+              },
+              {
+                "match": {
+                  "location": "features/support/hooks.rb:28"
+                },
+                "result": {
+                  "status": "passed",
+                  "duration": 271629000
+                }
+              }
+            ]
+          }
+        ],
+        "after": [
+          {
+            "match": {
+              "location": "features/support/hooks.rb:20"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 126000
+            }
+          },
+          {
+            "match": {
+              "location": "capybara-2.15.1/lib/capybara/cucumber.rb:9"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 37208000
+            }
+          }
+        ]
+      },
+      {
+        "id": "capture-applicant-information-on-teas-plus-as-attorney;prompt-for-correct-entity-information;;3",
+        "keyword": "Scenario Outline",
+        "name": "Prompt for correct entity information",
+        "description": "",
+        "line": 21,
+        "type": "scenario",
+        "tags": [
+          {
+            "name": "@slow",
+            "line": 1
+          }
+        ],
+        "before": [
+          {
+            "match": {
+              "location": "capybara-2.15.1/lib/capybara/cucumber.rb:13"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 20000
+            }
+          },
+          {
+            "match": {
+              "location": "capybara-2.15.1/lib/capybara/cucumber.rb:21"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 20000
+            }
+          },
+          {
+            "match": {
+              "location": "features/support/hooks.rb:16"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 13000
+            }
+          }
+        ],
+        "steps": [
+          {
+            "keyword": "Given ",
+            "name": "I am filling out the \"TEAS Plus\" form as an \"Attorney\"",
+            "line": 21,
+            "match": {
+              "location": "features/step_definitions/navigation_steps.rb:1"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 599609000
+            },
+            "after": [
+              {
+                "match": {
+                  "location": "features/support/hooks.rb:6"
+                },
+                "result": {
+                  "status": "passed",
+                  "duration": 1003683000
+                }
+              },
+              {
+                "match": {
+                  "location": "features/support/hooks.rb:28"
+                },
+                "result": {
+                  "status": "passed",
+                  "duration": 259761000
+                }
+              }
+            ]
+          },
+          {
+            "keyword": "When ",
+            "name": "I choose \"Corporation\" for \"Entity Type\"",
+            "line": 21,
+            "match": {
+              "location": "features/step_definitions/form_steps.rb:1"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 144103000
+            },
+            "after": [
+              {
+                "match": {
+                  "location": "features/support/hooks.rb:6"
+                },
+                "result": {
+                  "status": "passed",
+                  "duration": 1000222000
+                }
+              },
+              {
+                "match": {
+                  "location": "features/support/hooks.rb:28"
+                },
+                "result": {
+                  "status": "passed",
+                  "duration": 270379000
+                }
+              }
+            ]
+          },
+          {
+            "keyword": "Then ",
+            "name": "the \"State or Country of Incorporation\" field should be displayed",
+            "line": 21,
+            "match": {
+              "location": "features/step_definitions/form_steps.rb:18"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1526356000
+            },
+            "after": [
+              {
+                "match": {
+                  "location": "features/support/hooks.rb:6"
+                },
+                "result": {
+                  "status": "passed",
+                  "duration": 1000640000
+                }
+              },
+              {
+                "match": {
+                  "location": "features/support/hooks.rb:28"
+                },
+                "result": {
+                  "status": "passed",
+                  "duration": 258703000
+                }
+              }
+            ]
+          }
+        ],
+        "after": [
+          {
+            "match": {
+              "location": "features/support/hooks.rb:20"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 181000
+            }
+          },
+          {
+            "match": {
+              "location": "capybara-2.15.1/lib/capybara/cucumber.rb:9"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 39554000
+            }
+          }
+        ]
+      },
+      {
+        "id": "capture-applicant-information-on-teas-plus-as-attorney;prompt-for-correct-entity-information;;4",
+        "keyword": "Scenario Outline",
+        "name": "Prompt for correct entity information",
+        "description": "",
+        "line": 22,
+        "type": "scenario",
+        "tags": [
+          {
+            "name": "@slow",
+            "line": 1
+          }
+        ],
+        "before": [
+          {
+            "match": {
+              "location": "capybara-2.15.1/lib/capybara/cucumber.rb:13"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 18000
+            }
+          },
+          {
+            "match": {
+              "location": "capybara-2.15.1/lib/capybara/cucumber.rb:21"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 18000
+            }
+          },
+          {
+            "match": {
+              "location": "features/support/hooks.rb:16"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 14000
+            }
+          }
+        ],
+        "steps": [
+          {
+            "keyword": "Given ",
+            "name": "I am filling out the \"TEAS Plus\" form as an \"Attorney\"",
+            "line": 22,
+            "match": {
+              "location": "features/step_definitions/navigation_steps.rb:1"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 594374000
+            },
+            "after": [
+              {
+                "match": {
+                  "location": "features/support/hooks.rb:6"
+                },
+                "result": {
+                  "status": "passed",
+                  "duration": 1004978000
+                }
+              },
+              {
+                "match": {
+                  "location": "features/support/hooks.rb:28"
+                },
+                "result": {
+                  "status": "passed",
+                  "duration": 253002000
+                }
+              }
+            ]
+          },
+          {
+            "keyword": "When ",
+            "name": "I choose \"Individual\" for \"Entity Type\"",
+            "line": 22,
+            "match": {
+              "location": "features/step_definitions/form_steps.rb:1"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 144707000
+            },
+            "after": [
+              {
+                "match": {
+                  "location": "features/support/hooks.rb:6"
+                },
+                "result": {
+                  "status": "passed",
+                  "duration": 1002898000
+                }
+              },
+              {
+                "match": {
+                  "location": "features/support/hooks.rb:28"
+                },
+                "result": {
+                  "status": "passed",
+                  "duration": 257162000
+                }
+              }
+            ]
+          },
+          {
+            "keyword": "Then ",
+            "name": "the \"Country of Citizenship\" field should be displayed",
+            "line": 22,
+            "match": {
+              "location": "features/step_definitions/form_steps.rb:18"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1368302000
+            },
+            "after": [
+              {
+                "match": {
+                  "location": "features/support/hooks.rb:6"
+                },
+                "result": {
+                  "status": "passed",
+                  "duration": 1003033000
+                }
+              },
+              {
+                "match": {
+                  "location": "features/support/hooks.rb:28"
+                },
+                "result": {
+                  "status": "passed",
+                  "duration": 247139000
+                }
+              }
+            ]
+          }
+        ],
+        "after": [
+          {
+            "match": {
+              "location": "features/support/hooks.rb:20"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 124000
+            }
+          },
+          {
+            "match": {
+              "location": "capybara-2.15.1/lib/capybara/cucumber.rb:9"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 32729000
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
