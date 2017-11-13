@@ -21,10 +21,10 @@ After cloning repository and using terminal to get to the directory.
 *Note: Be sure to enter in your browserstack username and access key ENV variables within the ~./config directory*
  * `gem install bundler`
  * `bundle install`
- * `rake attorney_plus` - to run standard single test in browserstack
+ * `rake browserstack` - to run standard single test in browserstack
  * `rake parallel` - to run parallel tests for multiple browsers within browserstack
- * `rake local` - to run on localhost within browserstack
- * `rake dev` - to run tests on local machine. *Note: can add `browser=chrome` to test on chrome*
+ * `rake localhost` - to run on localhost within browserstack
+ * `rake local` - to run tests on local machine. *Note: can add `browser=chrome` to test on chrome*
 
 ### Pa11y STEPS
 
@@ -51,7 +51,7 @@ You can see the script commands in the `508scan/package.json` directory and run 
  ```
  sudo gem install bundler
  bundle
- rake attorney_plus
+ rake browserstack
  ```
  6. You will need to install the NODEJS plugin and follow the configuration instructions to get the recent node version, then enable it in Build Environment.
  7. Under Build, click "Add build step" -> "Execute Shell" and enter:
